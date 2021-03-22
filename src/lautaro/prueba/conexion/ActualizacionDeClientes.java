@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class GuardaClientePrueba {
+public class ActualizacionDeClientes {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -14,28 +14,18 @@ public class GuardaClientePrueba {
 		Session miSession=miFactory.openSession();
 		
 		try {
-			Cliente cliente1= new Cliente("Josue", "Garcia", "Maria jose");
+			
+			int ClienteId=3;
 			
 			miSession.beginTransaction();
 			
-			miSession.save(cliente1);
+			Cliente miCliente=miSession.get(Cliente.class, ClienteId);
+			
+			miCliente.setNombre("Lautaro Nahuel");
 			
 			miSession.getTransaction().commit();
 			
-			System.out.println("Registro insertado correctamente en BBDD");
-			
-			//Lectura de registro
-			miSession.beginTransaction();
-			
-			System.out.println("Lectura de registro con ID: " + cliente1.getId());
-			
-			Cliente clienteInsertado = miSession.get(Cliente.class, cliente1.getId());
-			
-			System.out.println("Registro: " + clienteInsertado);
-			
-			miSession.getTransaction().commit();
-			
-			System.out.println("Terminado");
+			System.out.println("Registro actualizado correctamente en BBDD");
 			
 			miSession.close();
 		}finally {

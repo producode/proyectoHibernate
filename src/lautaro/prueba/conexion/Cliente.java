@@ -4,15 +4,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="clientes")
-public class Clientes {
+public class Cliente {
 	
-	public Clientes(String nombre, String apellido, String direccion) {
+	public Cliente(String nombre, String apellido, String direccion) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
 	}
 
-	public Clientes() {
+	public Cliente() {
 	}
 	
 	public int getId() {
